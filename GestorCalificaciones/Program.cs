@@ -6,46 +6,39 @@ internal class Program
     {
         Console.WriteLine("Hello, World!");
 
-        Persona persona = new Persona("juan", 20);
-        Estudiante estudiante1 = new Estudiante("juanito", 12);
+        // Persona persona = new Persona("juan", 20);
+        // Estudiante estudiante1 = new Estudiante("juanito", 12);
+        List<Estudiante> listaEstudiantes = new List<Estudiante>();
 
-        estudiante1.Greet();
+        // estudiante1.Greet();
 
         bool isRunning = true;
 
         while (isRunning)
         {
 
-            Console.WriteLine("Hola bienvenido a la escuelita  Las Cañitas ");
-            Console.WriteLine("Que quieres hacer? \n");
-            Console.WriteLine("1: Inscribir un nuevo estudiante ");
-            Console.WriteLine("2: Ver si se quemo y darle su correaso aqui mimito ");
-            Console.WriteLine("3: Salir \n");
-            Console.WriteLine("");
-            string isRunningImput = Console.ReadLine();
+
+            string isRunningImput = Menu();
 
             switch (isRunningImput)
             {
                 case "1":
-                    Console.WriteLine("Para inscribir a un estudiante debe tener 3 cosas");
-                    System.Console.WriteLine("1: Acta de nacimiento para el nombre, el apellido y la edad");
-                    System.Console.WriteLine("2: El ultimo curso aprovado ");
-                    System.Console.WriteLine("3: 300 pesos para la inscripcion ");
-                    System.Console.WriteLine("Si tienes todo esto escribe: 1 ");
-                    System.Console.WriteLine("Si  no tienes todo esto escribe: 2 ");
-                    string inscripcionImput = Console.ReadLine();
+
+                    string inscripcionImput = Inscripcion();
+
                     if (inscripcionImput == "1")
                     {
+                        CreacionEstudiante();
 
                     }
-                    else if(inscripcionImput== "2")
+                    else if (inscripcionImput == "2")
                     {
                         System.Console.WriteLine("Vuelva cuando lo tenga");
 
                     }
                     else
                     {
-                       Console.WriteLine("Entrada no reconocida");     
+                        Console.WriteLine("Entrada no reconocida");
                     }
 
                     break;
@@ -73,5 +66,54 @@ internal class Program
 
 
 
+
     }
+    static string Inscripcion()
+    {
+        Console.WriteLine("Para inscribir a un estudiante debe tener 3 cosas");
+        System.Console.WriteLine("1: Acta de nacimiento para el nombre, el apellido y la edad");
+        System.Console.WriteLine("2: El ultimo curso aprovado ");
+        System.Console.WriteLine("3: 300 pesos para la inscripcion ");
+        System.Console.WriteLine("Si tienes todo esto escribe: 1 ");
+        System.Console.WriteLine("Si  no tienes todo esto escribe: 2 ");
+        string inscripcionImput = Console.ReadLine();
+
+        return inscripcionImput;
+    }
+
+    static string Menu()
+    {
+        Console.WriteLine("Hola bienvenido a la escuelita  Las Cañitas ");
+        Console.WriteLine("Que quieres hacer? \n");
+        Console.WriteLine("1: Inscribir un nuevo estudiante ");
+        Console.WriteLine("2: Ver si se quemo y darle su correaso aqui mimito ");
+        Console.WriteLine("3: Salir \n");
+        Console.WriteLine("");
+
+        return Console.ReadLine();
+    }
+    static void CreacionEstudiante()
+    {
+        string name;
+        string lastName;
+        int edad=0;
+        System.Console.WriteLine("Cual es el nombre del estudiante");
+        name = Console.ReadLine();
+        System.Console.WriteLine("Cual es el apellido del estudiante");
+        lastName= Console.ReadLine();
+        System.Console.WriteLine("Cual es la edad del estudiante");
+        bool intEdad = int.TryParse(Console.ReadLine(),out int  intParseResult);
+        if (intEdad)
+        {
+            edad = intParseResult;
+        }
+        else
+        {
+            System.Console.WriteLine("entrada no valida para edad");
+        }
+        
+        Console.WriteLine($" El estudiante que quieres instribir es {name} {lastName} y tiene {edad} años. \n ");
+        Estudiante estudiante = new Estudiante(name,lastName,edad);
+    }
+
 }
