@@ -31,7 +31,9 @@ public class Estudiante : Persona
 {
 
     // private Dictionary<string, List<int>> Notas3 { get;  set; }
-    private Dictionary<string, int[]> Notas { get;  set; }
+    // private Dictionary<string, int[]> Notas { get;  set; }
+    private Dictionary<string, int[]> Materias = new Dictionary<string, int[]>();
+
 
 
     public Estudiante(string name, int age) : base(name, age)
@@ -48,17 +50,18 @@ public class Estudiante : Persona
 
     private void SetNotas()
     {
-        
+
     }
 
-    public  void AddNotas(string materia)
+    public void AddMaterias(string materia,int periodos)
     {
-        Notas.Add(materia,new int [4]);
+
+        Materias.Add(materia, new int[periodos]);
 
     }
     public void GetNotas(string materia)
     {
-       
+
 
     }
 
