@@ -56,11 +56,9 @@ public class Estudiante : Persona
         Notas.Add("Matematica",[4]);
 
     }
-    public int GetNotas(string materia)
+    public void GetNotas(string materia)
     {
-        get{
-            return Age;
-        }
+       
 
     }
 
