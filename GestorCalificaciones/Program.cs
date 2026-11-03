@@ -31,7 +31,7 @@ internal class Program
                     {
 
 
-                       listaEstudiantes= AddEstudianteToList(CreacionEstudiante(), listaEstudiantes);
+                       AddEstudianteToList(CreacionEstudiante(), listaEstudiantes);
 
 
 
@@ -157,6 +157,16 @@ internal class Program
             
             return estudiantes;
         }
+        static void  AddEstudianteToList2(Estudiante estudiante,List<Estudiante>lista)
+        {
+            // List<Estudiante> estudiantes =lista ;
+            // estudiantes.Add(estudiante);
+            lista.Add(estudiante);
+            
+            
+        }
+
+
     }
 
 
