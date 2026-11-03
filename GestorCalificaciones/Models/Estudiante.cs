@@ -14,6 +14,7 @@ public class Estudiante : Persona
     // private Dictionary<string, List<int>> Notas3 { get;  set; }
     // private Dictionary<string, int[]> Notas { get;  set; }
     private Dictionary<string, int[]> Materias = new Dictionary<string, int[]>();
+    
 
 
 
@@ -35,7 +36,7 @@ public class Estudiante : Persona
         System.Console.WriteLine($"Hola {Name} {LastName} ,  de  {Age} años bienvenido a la escuela ");
 
     }
-    public  void EstudiantesInscritos()
+    public  void EstudianteInscrito()
     {
         System.Console.WriteLine($"Hola {Name} {LastName} ,  de  {Age} esta inscrito ");
 

@@ -31,7 +31,7 @@ internal class Program
                     {
 
 
-                       AddEstudianteToList(CreacionEstudiante(), listaEstudiantes);
+                        AddEstudianteToList(CreacionEstudiante(), listaEstudiantes);
 
 
 
@@ -113,15 +113,28 @@ internal class Program
         }
         static Estudiante CreacionEstudiante()
         {
+
             string name;
             string lastName;
             int edad = 0;
+
+
+            LoopImputString("Cual es el nombre del estudiante");
+
+
             System.Console.WriteLine("Cual es el nombre del estudiante");
+
             name = Console.ReadLine();
+
+
+
             System.Console.WriteLine("Cual es el apellido del estudiante");
             lastName = Console.ReadLine();
+
+
             System.Console.WriteLine("Cual es la edad del estudiante");
             bool intEdad = int.TryParse(Console.ReadLine(), out int intParseResult);
+
             if (intEdad)
             {
                 edad = intParseResult;
@@ -142,28 +155,68 @@ internal class Program
 
         }
 
+        static string LoopImputString(string msj)
+        {
+            bool loopingImput = true;
+            string stringToreturn = "";
+
+            while (loopingImput)
+            {
+                // System.Console.WriteLine("Cual es el nombre del estudiante");
+                Console.WriteLine(msj);
+                System.Console.WriteLine("Si quieres cancelar escribe Cancelar ");
+                string imput = Console.ReadLine();
+                if (string.IsNullOrEmpty(imput))
+                {
+                    System.Console.WriteLine("Por favor entra un valor en letras valido");
+                }
+                else if (imput.Any(char.IsDigit))
+                {
+                    System.Console.WriteLine("Por favor entra un valor en letras valido");
+
+                }
+                else if(imput.ToLower() == "cancelar")
+                {
+                    stringToreturn= "cancelar";
+                    loopingImput =false;
+                }
+                else
+                {
+                    stringToreturn = imput;
+                }
+
+
+
+
+            }
+
+            return stringToreturn;
+
+
+        }
+
 
         static void EstudiantesInscritos(Estudiante estudiante)
         {
-            estudiante.EstudiantesInscritos();
+            estudiante.EstudianteInscrito();
 
         }
 
+        //Old implementation here for reference
+        // static List<Estudiante> AddEstudianteToList3(Estudiante estudiante,List<Estudiante>lista)
+        // {
+        //     List<Estudiante> estudiantes =lista ;
+        //     estudiantes.Add(estudiante);
 
-        static List<Estudiante> AddEstudianteToList(Estudiante estudiante,List<Estudiante>lista)
-        {
-            List<Estudiante> estudiantes =lista ;
-            estudiantes.Add(estudiante);
-            
-            return estudiantes;
-        }
-        static void  AddEstudianteToList2(Estudiante estudiante,List<Estudiante>lista)
+        //     return estudiantes;
+        // }
+        static void AddEstudianteToList(Estudiante estudiante, List<Estudiante> lista)
         {
             // List<Estudiante> estudiantes =lista ;
             // estudiantes.Add(estudiante);
             lista.Add(estudiante);
-            
-            
+
+
         }
 
 
