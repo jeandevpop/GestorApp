@@ -40,7 +40,7 @@ public class Estudiante : Persona
 
     }
 
-    public virtual void Greet()
+    public override void Greet()
     {
         System.Console.WriteLine($"Hola {Name} bienvenido a la escuela ");
 
@@ -51,9 +51,9 @@ public class Estudiante : Persona
         
     }
 
-    public void AddNotas()
+    public  void AddNotas(string materia)
     {
-        Notas.Add("Matematica",[4]);
+        Notas.Add(materia,new int [4]);
 
     }
     public void GetNotas(string materia)
