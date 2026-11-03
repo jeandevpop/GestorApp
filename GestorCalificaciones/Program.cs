@@ -138,8 +138,12 @@ internal class Program
 
             while (!int.TryParse(Console.ReadLine(), out edad)|| edad < 3 || edad > 22)
             {
+                // string input =;
 
                 System.Console.WriteLine("Edad no valida para edad tiene que ser mas de 3 y menos de 23. Intente de nuevo:");
+
+                // System.Console.WriteLine("si quieres salir escribe Cancelar" );
+                
                 // intEdad = int.TryParse(Console.ReadLine(), out int intParseResult);
                 // edad = intParseResult;
 
@@ -148,9 +152,16 @@ internal class Program
 
 
             // Console.WriteLine($" El estudiante que quieres instribir es {name} {lastName} y tiene {edad} años. \n ");
+            if(name =="cancelar" || lastName =="cancelar"|| edad == 0)
+            {
+                System.Console.WriteLine("le diste a cancelar la inscripcion hablamo el malte");
+                return default;
+            }
+
             Estudiante estudiante = new Estudiante(name, lastName, edad);
+
             Console.WriteLine($" El estudiante {name} {lastName} fue inscrito  \n");
-            estudiante.Greet();
+            // estudiante.Greet();
 
             estudiante.AddMaterias("Matematica", 4);
             // System.Console.WriteLine();
