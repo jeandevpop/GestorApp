@@ -119,30 +119,33 @@ internal class Program
             int edad = 0;
 
 
-            LoopImputString("Cual es el nombre del estudiante");
+            // LoopImputString("Cual es el nombre del estudiante");
 
 
-            System.Console.WriteLine("Cual es el nombre del estudiante");
+            // System.Console.WriteLine("Cual es el nombre del estudiante");
 
-            name = Console.ReadLine();
+            name = LoopImputString("Cual es el nombre del estudiante");
 
 
+            // System.Console.WriteLine("Cual es el apellido del estudiante");
+            lastName = LoopImputString("Cual es el apellido del estudiante");
 
-            System.Console.WriteLine("Cual es el apellido del estudiante");
-            lastName = Console.ReadLine();
 
 
             System.Console.WriteLine("Cual es la edad del estudiante");
-            bool intEdad = int.TryParse(Console.ReadLine(), out int intParseResult);
+            // bool intEdad = int.TryParse(Console.ReadLine(), out int intParseResult);
+            // bool intEdad = false;
 
-            if (intEdad)
+            while (!int.TryParse(Console.ReadLine(), out edad)|| edad < 3 || edad > 22)
             {
-                edad = intParseResult;
+
+                System.Console.WriteLine("Edad no valida para edad tiene que ser mas de 3 y menos de 23. Intente de nuevo:");
+                // intEdad = int.TryParse(Console.ReadLine(), out int intParseResult);
+                // edad = intParseResult;
+
             }
-            else
-            {
-                System.Console.WriteLine("entrada no valida para edad");
-            }
+
+
 
             // Console.WriteLine($" El estudiante que quieres instribir es {name} {lastName} y tiene {edad} años. \n ");
             Estudiante estudiante = new Estudiante(name, lastName, edad);
@@ -151,6 +154,17 @@ internal class Program
 
             estudiante.AddMaterias("Matematica", 4);
             // System.Console.WriteLine();
+            if (name == "cancelar")
+            {
+                return default;
+
+            }
+            else if (lastName == "cancelar")
+            {
+                return default;
+
+            }
+
             return estudiante;
 
         }
@@ -175,20 +189,22 @@ internal class Program
                     System.Console.WriteLine("Por favor entra un valor en letras valido");
 
                 }
-                else if(imput.ToLower() == "cancelar")
+                else if (imput.ToLower() == "cancelar")
                 {
-                    stringToreturn= "cancelar";
-                    loopingImput =false;
+                    stringToreturn = "cancelar";
+                    loopingImput = false;
                 }
                 else
                 {
                     stringToreturn = imput;
+                    loopingImput = false;
                 }
 
 
 
 
             }
+            loopingImput = false;
 
             return stringToreturn;
 
