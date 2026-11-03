@@ -7,14 +7,14 @@ public class Persona
 {
 
     protected string Name { get;   set; }
-    protected string LastNameName { get;   set; }
+    protected string LastName { get;   set; }
     protected int Age { get; private set; }
 
 
     public Persona(string name, string lastName, int age)
     {
         Name = name;
-        LastNameName =lastName;
+        LastName =lastName;
         Age = age;
 
     }

@@ -1,15 +1,16 @@
 using GestorCalificaciones.Models;
+namespace GestorCalificaciones.Models;
 
 public class Estudiante : Persona
 
 {
 
-    string _name { get; set; }
-    string Name { get; set; }
-    string _lastName { get; set; }
-    string lastName { get; set; }
-    int _age { get; set; }
-    int age { get; set; }
+    // string _name { get; set; }
+    // string Name { get; set; }
+    // string _lastName { get; set; }
+    // string lastName { get; set; }
+    // int _age { get; set; }
+    // int age { get; set; }
     // private Dictionary<string, List<int>> Notas3 { get;  set; }
     // private Dictionary<string, int[]> Notas { get;  set; }
     private Dictionary<string, int[]> Materias = new Dictionary<string, int[]>();
@@ -18,11 +19,11 @@ public class Estudiante : Persona
 
     public Estudiante(string name, string lastName, int age) : base(name, lastName, age)
     {
-        _name = name;
-        _lastName = lastName;
-        _age = age;
+        // _name = name;
+        // _lastName = lastName;
+        // _age = age;
 
-                Console.WriteLine($" El estudiante {name} {lastName} fue inscrito ");
+        
 
 
 
@@ -31,7 +32,12 @@ public class Estudiante : Persona
 
     public override void Greet()
     {
-        System.Console.WriteLine($"Hola {Name} bienvenido a la escuela ");
+        System.Console.WriteLine($"Hola {Name} {LastName} ,  de  {Age} años bienvenido a la escuela ");
+
+    }
+    public  void EstudiantesInscritos()
+    {
+        System.Console.WriteLine($"Hola {Name} {LastName} ,  de  {Age} esta inscrito ");
 
     }
 
