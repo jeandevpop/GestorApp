@@ -119,15 +119,11 @@ internal class Program
             int edad = 0;
 
 
-            // LoopImputString("Cual es el nombre del estudiante");
-
-
-            // System.Console.WriteLine("Cual es el nombre del estudiante");
+           
 
             name = LoopImputString("Cual es el nombre del estudiante");
 
 
-            // System.Console.WriteLine("Cual es el apellido del estudiante");
             lastName = LoopImputString("Cual es el apellido del estudiante");
 
 
@@ -161,10 +157,10 @@ internal class Program
             Estudiante estudiante = new Estudiante(name, lastName, edad);
 
             Console.WriteLine($" El estudiante {name} {lastName} fue inscrito  \n");
-            // estudiante.Greet();
+            
 
             estudiante.AddMaterias("Matematica", 4);
-            // System.Console.WriteLine();
+            
             if (name == "cancelar")
             {
                 return default;
@@ -229,14 +225,7 @@ internal class Program
 
         }
 
-        //Old implementation here for reference
-        // static List<Estudiante> AddEstudianteToList3(Estudiante estudiante,List<Estudiante>lista)
-        // {
-        //     List<Estudiante> estudiantes =lista ;
-        //     estudiantes.Add(estudiante);
-
-        //     return estudiantes;
-        // }
+        
         static void AddEstudianteToList(Estudiante estudiante, List<Estudiante> lista)
         {
             // List<Estudiante> estudiantes =lista ;
