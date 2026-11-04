@@ -93,9 +93,9 @@ internal class Program
             System.Console.WriteLine("- 300 pesos para la inscripcion ");
             System.Console.WriteLine("Si tienes todo esto escribe: 1 ");
             System.Console.WriteLine("Si  no tienes todo esto escribe: 2 ");
-            string inscripcionImput = Console.ReadLine();
+            // string inscripcionImput = Console.ReadLine();
 
-            return inscripcionImput;
+            return Console.ReadLine();
         }
 
         static string Menu()
@@ -106,7 +106,7 @@ internal class Program
             Console.WriteLine("2: Ver si se quemo y darle su correaso aqui mimito ");
             System.Console.WriteLine("3: ver los estudiantes inscritos");
             Console.WriteLine("4: Salir \n");
-            
+
 
             return Console.ReadLine();
         }
@@ -121,36 +121,56 @@ internal class Program
 
 
             name = LoopImputString("Cual es el nombre del estudiante");
+            if (name == "cancelar")
+            {
+                System.Console.WriteLine("le diste a cancelar la inscripcion hablamo el malte");
+                return default;
+            }
             lastName = LoopImputString("Cual es el apellido del estudiante");
-
-
-            if (name == "cancelar" || lastName == "cancelar" || edad == 0)
+            if (lastName == "cancelar")
             {
                 System.Console.WriteLine("le diste a cancelar la inscripcion hablamo el malte");
                 return default;
             }
 
-            System.Console.WriteLine("Cual es la edad del estudiante");
 
 
-            while (!int.TryParse(Console.ReadLine(), out edad) || edad < 3 || edad > 22)
+            // if (name == "cancelar" || lastName == "cancelar" )
+            // {
+            //     System.Console.WriteLine("le diste a cancelar la inscripcion hablamo el malte");
+            //     return default;
+            // }
+
+            // System.Console.WriteLine("Cual es la edad del estudiante");
+            edad = LoopImputInt("Cual es la edad del estudiante");
+            if (edad == null)
             {
-
-
-                System.Console.WriteLine("Edad no valida para edad tiene que ser mas de 3 y menos de 23. Intente de nuevo:");
-
+                System.Console.WriteLine("le diste a cancelar la inscripcion hablamo el malte");
+                return default;
 
 
             }
+
+            // while (!int.TryParse(Console.ReadLine(), out edad) || edad < 3 || edad > 22)
+            // {
+
+
+            //     System.Console.WriteLine("Edad no valida para edad tiene que ser mas de 3 y menos de 23. Intente de nuevo:");
+
+
+
+            // }
 
 
 
 
             Estudiante estudiante = new Estudiante(name, lastName, edad);
 
- 
 
-           
+
+
+
+
 
             return estudiante;
 
@@ -204,6 +224,82 @@ internal class Program
 
 
         }
+
+
+        static int LoopImputInt(string msj)
+        {
+            bool loopingImput = true;
+            int intToreturn = 0;
+
+            while (loopingImput)
+            {
+                Console.WriteLine(msj);
+                System.Console.WriteLine("Si quieres cancelar escribe Cancelar ");
+
+                string imput = Console.ReadLine();
+                if (imput.ToLower() == "cancelar")
+                {
+                    return default;
+                    loopingImput = false;
+                    break;
+                }else if (string.IsNullOrEmpty(imput))
+                {
+                    System.Console.WriteLine("Por favor entra un valor en numeros valido");
+                }
+
+                bool edadbool = int.TryParse(imput, out int edad);
+                if (edadbool)
+                {
+                    if (edad >= 3)
+                    {
+                            return edad;
+
+                    }
+                    else if(edad <3)
+                    {
+                        System.Console.WriteLine("error!!!!! Edad menor a 3 años");
+                        // System.Console.WriteLine("error!!!!! vuelve looping egain");
+                    }
+                }
+
+
+
+                
+                // else if (int.TryParse(imput, out int edad))
+                // {
+                //     System.Console.WriteLine("Por favor entra un valor en numeros valido");
+                // }
+                // else if (int.TryParse(imput, out edad))
+                // {
+                //     System.Console.WriteLine($" Entraste {imput}");
+                //     intToreturn = edad;
+                //     return edad;
+
+                // }
+                // else
+                // {
+
+                //     System.Console.WriteLine("error!!!!! vuelve looping egain");
+                //     // stringToreturn = imput;
+                //     // loopingImput = false;
+                // }
+
+
+
+
+
+
+
+
+
+            }
+            // loopingImput = false;
+
+            return intToreturn;
+
+
+        }
+
 
 
         static void EstudiantesInscritos(Estudiante estudiante)
