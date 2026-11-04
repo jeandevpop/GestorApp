@@ -7,8 +7,7 @@ internal class Program
     {
         Console.WriteLine("Hello, World!");
 
-        // Persona persona = new Persona("juan", 20);
-        // Estudiante estudiante1 = new Estudiante("juanito", 12);
+        
         List<Estudiante> listaEstudiantes = new List<Estudiante>();
 
         // estudiante1.Greet();
@@ -129,25 +128,20 @@ internal class Program
 
 
             System.Console.WriteLine("Cual es la edad del estudiante");
-            // bool intEdad = int.TryParse(Console.ReadLine(), out int intParseResult);
-            // bool intEdad = false;
+            
 
             while (!int.TryParse(Console.ReadLine(), out edad)|| edad < 3 || edad > 22)
             {
-                // string input =;
+                
 
                 System.Console.WriteLine("Edad no valida para edad tiene que ser mas de 3 y menos de 23. Intente de nuevo:");
 
-                // System.Console.WriteLine("si quieres salir escribe Cancelar" );
                 
-                // intEdad = int.TryParse(Console.ReadLine(), out int intParseResult);
-                // edad = intParseResult;
 
             }
 
 
 
-            // Console.WriteLine($" El estudiante que quieres instribir es {name} {lastName} y tiene {edad} años. \n ");
             if(name =="cancelar" || lastName =="cancelar"|| edad == 0)
             {
                 System.Console.WriteLine("le diste a cancelar la inscripcion hablamo el malte");
@@ -183,7 +177,6 @@ internal class Program
 
             while (loopingImput)
             {
-                // System.Console.WriteLine("Cual es el nombre del estudiante");
                 Console.WriteLine(msj);
                 System.Console.WriteLine("Si quieres cancelar escribe Cancelar ");
                 string imput = Console.ReadLine();
