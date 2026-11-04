@@ -233,7 +233,7 @@ internal class Program
                 bool edadbool = int.TryParse(imput, out int edad);
                 if (edadbool)
                 {
-                    if (edad >= 3)
+                    if (edad >= 3 && edad <= 22)
                     {
                             return edad;
 
