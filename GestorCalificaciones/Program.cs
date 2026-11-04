@@ -4,6 +4,8 @@ using GestorCalificaciones.Models;
 
 internal class Program
 {
+    private static object calificaciones;
+
     private static void Main(string[] args)
     {
         Console.WriteLine("Hello, World!");
@@ -65,16 +67,31 @@ internal class Program
 
                 case "2":
 
+                    System.Console.WriteLine("Cual de los estudiantes quieres ver las notas?");
+                    VerEstudiantes(listaEstudiantes);
+                    System.Console.WriteLine("Con el ID puedes elegir el que quieres ver ");
+                    string selectedId = Console.ReadLine();
+                    foreach (var estudent in listaEstudiantes)
+                    {
+                        estudent.SetNotas();
+                        if(estudent.StudenID.ToString() == selectedId.Trim())
+                        {
+                            estudent.GetNotas();
+                            
+                            
+                        }
+                        
+                    }
+
+
                     break;
                 case "3":
-                    System.Console.WriteLine("ver los estudiantes inscritos");
-                    foreach (Estudiante alumno in listaEstudiantes)
-                    {
-                        EstudiantesInscritos(alumno);
-
-                    }
+                VerEstudiantes(listaEstudiantes);
+                   
                     break;
                 case "4":
+                break;
+                case "5":
                     System.Console.WriteLine("Muchas gracias hablamos luego");
                     isRunning = false;
 
@@ -115,7 +132,7 @@ internal class Program
             Console.WriteLine("1: Inscribir un nuevo estudiante ");
             Console.WriteLine("2: Ver si se quemo y darle su correaso aqui mimito ");
             System.Console.WriteLine("3: ver los estudiantes inscritos");
-            Console.WriteLine("4: Salir \n");
+            Console.WriteLine("5: Salir \n");
 
 
             return Console.ReadLine();
@@ -156,7 +173,7 @@ internal class Program
             }
             else
             {
-            Estudiante estudiante = new Estudiante(name, lastName, edad,studentID);
+            Estudiante estudiante = new Estudiante(name, lastName, edad,studentID,null);
                 
             return estudiante;
             }
@@ -279,6 +296,15 @@ internal class Program
             return false;
         }
 
+        static void VerEstudiantes(List<Estudiante>listaEstudiantes)
+        {
+             System.Console.WriteLine("ver los estudiantes inscritos");
+                    foreach (Estudiante alumno in listaEstudiantes)
+                    {
+                        EstudiantesInscritos(alumno);
+
+                    }
+        }
 
     }
 
