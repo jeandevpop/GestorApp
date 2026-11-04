@@ -115,7 +115,7 @@ internal class Program
 
             string name;
             string lastName;
-            int edad = 0;
+            int edad ;
 
 
 
@@ -150,6 +150,12 @@ internal class Program
 
 
             }
+            else
+            {
+            Estudiante estudiante = new Estudiante(name, lastName, edad);
+                
+            return estudiante;
+            }
 
             // while (!int.TryParse(Console.ReadLine(), out edad) || edad < 3 || edad > 22)
             // {
@@ -164,7 +170,6 @@ internal class Program
 
 
 
-            Estudiante estudiante = new Estudiante(name, lastName, edad);
 
 
 
@@ -172,7 +177,6 @@ internal class Program
 
 
 
-            return estudiante;
 
         }
 
@@ -229,7 +233,7 @@ internal class Program
         static int LoopImputInt(string msj)
         {
             bool loopingImput = true;
-            int intToreturn = 0;
+            // int intToreturn = 0;
 
             while (loopingImput)
             {
@@ -295,7 +299,7 @@ internal class Program
             }
             // loopingImput = false;
 
-            return intToreturn;
+            return default;
 
 
         }
