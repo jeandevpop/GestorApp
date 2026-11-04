@@ -137,10 +137,7 @@ internal class Program
 
 
                         }
-                        else
-                        {
-                            System.Console.WriteLine("Ese estudiante no esta aqui");
-                        }
+                        
 
                     }
 
@@ -229,7 +226,7 @@ internal class Program
             else
             {
                 Estudiante estudiante = new Estudiante(name, lastName, edad, studentID, null);
-
+                
                 return estudiante;
             }
 

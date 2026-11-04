@@ -27,5 +27,12 @@ public class GestorCalifaciones
         estudiante.SetNotas(nota);
 
     }
+    public bool CreacionEstudiante(string name, string lastName, int edad, int studentID)
+    {
+                        Estudiante estudiante = new Estudiante(name, lastName, edad, studentID, null);
+
+
+        return false;
+    }
 
 }
