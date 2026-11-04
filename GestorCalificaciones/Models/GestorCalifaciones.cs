@@ -22,7 +22,7 @@ public class GestorCalifaciones
         estudiante.GetNotas();
 
     }
-    public void SetNotas(Estudiante estudiante,int nota)
+    public void SetNotas(Estudiante estudiante,double nota)
     {
         estudiante.SetNotas(nota);
 

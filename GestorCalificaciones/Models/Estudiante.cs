@@ -11,7 +11,7 @@ public class Estudiante : Persona
 
     private Dictionary<string, int[]> Materias = new Dictionary<string, int[]>();
     public int StudenID { get; private set; }
-    private  List<int> CalificacionesListInt = new List<int>();
+    private  List<double> CalificacionesListInt = new List<double>();
     
     private bool Isaproved{get; set;}
     double MinimoAprovado = 70.0;
@@ -21,7 +21,7 @@ public class Estudiante : Persona
 
 
 
-    public Estudiante(string name, string lastName, int age, int studentID,List<int>?calificaciones) : base(name, lastName, age)
+    public Estudiante(string name, string lastName, int age, int studentID,List<double>?calificaciones) : base(name, lastName, age)
     {
 
         StudenID = studentID;
@@ -43,7 +43,7 @@ public class Estudiante : Persona
 
     }
 
-    public void SetNotas(int nota)
+    public void SetNotas(double nota)
     {
             CalificacionesListInt.Add(nota);
             
@@ -64,8 +64,25 @@ public class Estudiante : Persona
             
             
             System.Console.WriteLine($"Las todas de este {Name} son: {string.Join(",",CalificacionesListInt)} ");
+            if (CalificacionesListInt.Average() >= MinimoAprovado)
+            {
+                Isaproved =true;
+            }
+            else
+            {
+                Isaproved =false;
+            }
+            if (Isaproved)
+            {
+            System.Console.WriteLine($"El promedio del estudiante es {CalificacionesListInt.Average()} y esta aprobado");
+                
+            }
+            else
+            {
+            System.Console.WriteLine($"El promedio del estudiante es {CalificacionesListInt.Average()}  esta reprobado y le toca correaso...");
+                
+            }
 
-            System.Console.WriteLine($"El promedio del estudiante es {CalificacionesListInt.Average()}");
             
         }
         else
