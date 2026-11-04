@@ -144,7 +144,7 @@ internal class Program
 
           
             edad = LoopImputInt("Cual es la edad del estudiante");
-            if (edad == null)
+            if (edad == null || edad == 0)
             {
                 System.Console.WriteLine("le diste a cancelar la inscripcion hablamo el malte");
                 return default;
@@ -155,20 +155,8 @@ internal class Program
             {
             Estudiante estudiante = new Estudiante(name, lastName, edad);
                 
-            return default;
+            return estudiante;
             }
-
-            
-
-
-
-
-
-
-
-
-
-
 
 
         }
@@ -256,19 +244,6 @@ internal class Program
                         
                     }
                 }
-
-
-
-                
-                
-
-
-
-
-
-
-
-
 
             }
           
