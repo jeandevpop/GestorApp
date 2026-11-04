@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.Data.SqlTypes;
+using System.Security.Cryptography.X509Certificates;
 using GestorCalificaciones.Models;
 
 internal class Program
@@ -9,6 +10,7 @@ internal class Program
 
 
         List<Estudiante> listaEstudiantes = new List<Estudiante>();
+        int studentID =1;
 
 
         bool isRunning = true;
@@ -29,11 +31,12 @@ internal class Program
                     {
 
 
-                        bool creacionCorrecta =AddEstudianteToList(CreacionEstudiante(), listaEstudiantes);
+                        bool creacionCorrecta =AddEstudianteToList(CreacionEstudiante(studentID), listaEstudiantes);
                         if (creacionCorrecta)
                         {
                             
                             Console.WriteLine("estudiante creado correctamente");
+                            studentID++;
                         }
                         else
                         {
@@ -117,7 +120,7 @@ internal class Program
 
             return Console.ReadLine();
         }
-        static Estudiante? CreacionEstudiante()
+        static Estudiante? CreacionEstudiante(int studentID)
         {
 
             string name;
@@ -153,7 +156,7 @@ internal class Program
             }
             else
             {
-            Estudiante estudiante = new Estudiante(name, lastName, edad);
+            Estudiante estudiante = new Estudiante(name, lastName, edad,studentID);
                 
             return estudiante;
             }
