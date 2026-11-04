@@ -13,7 +13,19 @@ public class GestorCalifaciones
         public GestorCalifaciones()
     {
         
-        
+
+    }
+
+
+    public void GetNotas(Estudiante estudiante)
+    {
+        estudiante.GetNotas();
+
+    }
+    public void SetNotas(Estudiante estudiante,int nota)
+    {
+        estudiante.SetNotas(nota);
+
     }
 
 }

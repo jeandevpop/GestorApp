@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlTypes;
+using System.Reflection.Metadata;
 using System.Security.Cryptography.X509Certificates;
 using GestorCalificaciones.Models;
 
@@ -6,20 +7,21 @@ internal class Program
 {
     private static object calificaciones;
 
+
     private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        // Console.WriteLine("Hello, World!");
 
 
         List<Estudiante> listaEstudiantes = new List<Estudiante>();
-        int studentID =1;
+        int studentID = 1;
 
 
         bool isRunning = true;
 
         while (isRunning)
         {
-
+            GestorCalifaciones GestorNotas = new GestorCalifaciones();
 
             string isRunningImput = Menu();
 
@@ -33,10 +35,10 @@ internal class Program
                     {
 
 
-                        bool creacionCorrecta =AddEstudianteToList(CreacionEstudiante(studentID), listaEstudiantes);
+                        bool creacionCorrecta = AddEstudianteToList(CreacionEstudiante(studentID), listaEstudiantes);
                         if (creacionCorrecta)
                         {
-                            
+
                             Console.WriteLine("estudiante creado correctamente");
                             studentID++;
                         }
@@ -48,16 +50,16 @@ internal class Program
 
 
                     }
-                    else if (inscripcionImput == "2")
-                    {
-                        System.Console.WriteLine("ver las notas");
+                    // else if (inscripcionImput == "2")
+                    // {
+                    //     System.Console.WriteLine("ver las notas");
 
-                    }
-                    else if (inscripcionImput == "3")
-                    {
+                    // }
+                    // else if (inscripcionImput == "3")
+                    // {
 
 
-                    }
+                    // }
                     else
                     {
                         Console.WriteLine("Entrada no reconocida");
@@ -73,24 +75,76 @@ internal class Program
                     string selectedId = Console.ReadLine();
                     foreach (var estudent in listaEstudiantes)
                     {
-                        estudent.SetNotas();
-                        if(estudent.StudenID.ToString() == selectedId.Trim())
+
+                        if (estudent.StudenID.ToString() == selectedId.Trim())
                         {
-                            estudent.GetNotas();
-                            
-                            
+
+                            GestorNotas.GetNotas(estudent);
+
                         }
-                        
+
                     }
 
 
                     break;
                 case "3":
-                VerEstudiantes(listaEstudiantes);
-                   
+                    VerEstudiantes(listaEstudiantes);
+
                     break;
                 case "4":
-                break;
+                    System.Console.WriteLine("Cual de los estudiantes quieres ver las notas?");
+                    VerEstudiantes(listaEstudiantes);
+                    System.Console.WriteLine("Con el ID puedes elegir el que quieres ver ");
+                    string selectedIdForAdd = Console.ReadLine();
+                    foreach (Estudiante estudent in listaEstudiantes)
+                    {
+
+                        if (estudent.StudenID.ToString() == selectedIdForAdd.Trim())
+                        {
+                            System.Console.WriteLine("cuantas notas quieres agrear");
+                            string cantidadAgregar = Console.ReadLine();
+
+                            if (int.TryParse(cantidadAgregar, out int loop))
+                            {
+                                int counter = 0;
+                                while (counter < loop)
+                                {
+
+                                    System.Console.WriteLine($"dame la nota #{counter + 1}");
+                                    if (int.TryParse(Console.ReadLine(), out int nota))
+                                    {
+                                        GestorNotas.SetNotas(estudent, nota);
+                                        counter++;
+
+                                    }
+                                    else
+                                    {
+                                        System.Console.WriteLine("Valor invalido, intentalo de nuevo");
+                                    }
+
+                                }
+
+
+
+
+                            }
+                            else
+                            {
+                                System.Console.WriteLine("Valor invalido, intentalo de nuevo");
+                            }
+
+
+
+
+                        }
+                        else
+                        {
+                            System.Console.WriteLine("Ese estudiante no esta aqui");
+                        }
+
+                    }
+
+                    break;
                 case "5":
                     System.Console.WriteLine("Muchas gracias hablamos luego");
                     isRunning = false;
@@ -132,6 +186,7 @@ internal class Program
             Console.WriteLine("1: Inscribir un nuevo estudiante ");
             Console.WriteLine("2: Ver si se quemo y darle su correaso aqui mimito ");
             System.Console.WriteLine("3: ver los estudiantes inscritos");
+            Console.WriteLine("4: agregarle nota a un estudiante \n");
             Console.WriteLine("5: Salir \n");
 
 
@@ -142,7 +197,7 @@ internal class Program
 
             string name;
             string lastName;
-            int edad ;
+            int edad;
 
 
 
@@ -162,9 +217,9 @@ internal class Program
 
 
 
-          
+
             edad = LoopImputInt("Cual es la edad del estudiante");
-            if ( edad == 0)
+            if (edad == 0)
             {
                 System.Console.WriteLine("le diste a cancelar la inscripcion hablamo el malte");
                 return default;
@@ -173,9 +228,9 @@ internal class Program
             }
             else
             {
-            Estudiante estudiante = new Estudiante(name, lastName, edad,studentID,null);
-                
-            return estudiante;
+                Estudiante estudiante = new Estudiante(name, lastName, edad, studentID, null);
+
+                return estudiante;
             }
 
 
@@ -201,7 +256,7 @@ internal class Program
                 if (imput.ToLower() == "cancelar")
                 {
                     return "cancelar";
-                    
+
                 }
                 else if (string.IsNullOrEmpty(imput))
                 {
@@ -244,8 +299,9 @@ internal class Program
                 if (imput.ToLower() == "cancelar")
                 {
                     return default;
-                   
-                }else if (string.IsNullOrEmpty(imput))
+
+                }
+                else if (string.IsNullOrEmpty(imput))
                 {
                     System.Console.WriteLine("Por favor entra un valor en numeros valido");
                 }
@@ -255,18 +311,18 @@ internal class Program
                 {
                     if (edad >= 3 && edad <= 22)
                     {
-                            return edad;
+                        return edad;
 
                     }
-                    else if(edad <3 && edad > 22)
+                    else if (edad < 3 && edad > 22)
                     {
                         System.Console.WriteLine("error!!!!! Edad menor a 3 años o mayor de 22");
-                        
+
                     }
                 }
 
             }
-          
+
 
             return default;
 
@@ -287,23 +343,23 @@ internal class Program
 
             if (estudiante != null)
             {
-                
-            lista.Add(estudiante);
-            return true;
+
+                lista.Add(estudiante);
+                return true;
             }
-            
+
 
             return false;
         }
 
-        static void VerEstudiantes(List<Estudiante>listaEstudiantes)
+        static void VerEstudiantes(List<Estudiante> listaEstudiantes)
         {
-             System.Console.WriteLine("ver los estudiantes inscritos");
-                    foreach (Estudiante alumno in listaEstudiantes)
-                    {
-                        EstudiantesInscritos(alumno);
+            System.Console.WriteLine("ver los estudiantes inscritos");
+            foreach (Estudiante alumno in listaEstudiantes)
+            {
+                EstudiantesInscritos(alumno);
 
-                    }
+            }
         }
 
     }

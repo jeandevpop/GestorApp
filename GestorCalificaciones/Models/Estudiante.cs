@@ -14,7 +14,7 @@ public class Estudiante : Persona
     private  List<int> CalificacionesListInt = new List<int>();
     
     private bool Isaproved{get; set;}
-    double MinimoAprovado = 75.0;
+    double MinimoAprovado = 70.0;
     
 
 
@@ -43,12 +43,10 @@ public class Estudiante : Persona
 
     }
 
-    public void SetNotas()
+    public void SetNotas(int nota)
     {
-            CalificacionesListInt.Add(70);
-            CalificacionesListInt.Add(85);
-            CalificacionesListInt.Add(90);
-            CalificacionesListInt.Add(80);
+            CalificacionesListInt.Add(nota);
+            
 
 
     }
@@ -61,21 +59,13 @@ public class Estudiante : Persona
     }
     public void GetNotas()
     {
-        if(CalificacionesListInt.Count> 0 && CalificacionesListInt.Count >= 4)
+        if(CalificacionesListInt.Count> 0)
         {
-            double promedio;
-            int notas= 0;
-            // System.Console.WriteLine();
-            foreach (int nota in CalificacionesListInt)
-            {
-            notas += nota;
-            }
-
-            promedio = notas / CalificacionesListInt.Count;
+            
             
             System.Console.WriteLine($"Las todas de este {Name} son: {string.Join(",",CalificacionesListInt)} ");
 
-            System.Console.WriteLine($"El promedio del estudiante es {promedio}");
+            System.Console.WriteLine($"El promedio del estudiante es {CalificacionesListInt.Average()}");
             
         }
         else
