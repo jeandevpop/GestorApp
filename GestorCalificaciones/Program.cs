@@ -29,7 +29,16 @@ internal class Program
                     {
 
 
-                        AddEstudianteToList(CreacionEstudiante(), listaEstudiantes);
+                        bool creacionCorrecta =AddEstudianteToList(CreacionEstudiante(), listaEstudiantes);
+                        if (creacionCorrecta)
+                        {
+                            
+                            Console.WriteLine("estudiante creado correctamente");
+                        }
+                        else
+                        {
+                            System.Console.WriteLine("hubo un error en la creacion y no se agrego.");
+                        }
 
 
 
@@ -146,7 +155,7 @@ internal class Program
             {
             Estudiante estudiante = new Estudiante(name, lastName, edad);
                 
-            return estudiante;
+            return default;
             }
 
             
@@ -227,8 +236,7 @@ internal class Program
                 if (imput.ToLower() == "cancelar")
                 {
                     return default;
-                    loopingImput = false;
-                    break;
+                   
                 }else if (string.IsNullOrEmpty(imput))
                 {
                     System.Console.WriteLine("Por favor entra un valor en numeros valido");
@@ -279,12 +287,18 @@ internal class Program
         }
 
 
-        static void AddEstudianteToList(Estudiante estudiante, List<Estudiante> lista)
+        static bool AddEstudianteToList(Estudiante estudiante, List<Estudiante> lista)
         {
 
+            if (estudiante != null)
+            {
+                
             lista.Add(estudiante);
+            return true;
+            }
+            
 
-
+            return false;
         }
 
 
