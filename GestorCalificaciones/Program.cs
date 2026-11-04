@@ -111,7 +111,7 @@ internal class Program
                                 {
 
                                     System.Console.WriteLine($"dame la nota #{counter + 1}");
-                                    if (int.TryParse(Console.ReadLine(), out int nota))
+                                    if (int.TryParse(Console.ReadLine(), out int nota)&& nota> 0 && nota<=100)
                                     {
                                         GestorNotas.SetNotas(estudent, nota);
                                         counter++;
